@@ -9,12 +9,12 @@ export const StatsPage: React.FC = () => {
   const { code } = useParams<{ code: string }>();
   const { data: stats, isLoading, error } = useLinkStats(code!);
 
- const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
-console.log('API_BASE_URL:', API_BASE_URL);
+ const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+console.log('API_BASE_URL:', VITE_API_BASE_URL,import.meta.env.VITE_API_BASE_URL );
 
   const handleCopy = async () => {
     if (stats) {
-      await copyToClipboard(`${API_BASE_URL}/${stats.shortCode}`);
+      await copyToClipboard(`${VITE_API_BASE_URL}/${stats.shortCode}`);
     }
   };
 
@@ -96,7 +96,7 @@ console.log('API_BASE_URL:', API_BASE_URL);
         <h3 className="text-lg font-semibold text-gray-900 mb-4">Short URL</h3>
         <div className="flex items-center space-x-2">
           <code className="font-mono text-lg bg-gray-100 px-3 py-2 rounded flex-1">
-            {API_BASE_URL}/{stats.shortCode}
+            {VITE_API_BASE_URL}/{stats.shortCode}
           </code>
           <Button variant="secondary" onClick={handleCopy} icon={Copy}>
             Copy URL

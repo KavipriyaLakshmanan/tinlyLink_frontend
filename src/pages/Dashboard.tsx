@@ -12,8 +12,10 @@ export const Dashboard: React.FC = () => {
   const { data: links,refetch } = useLinks();
   const deleteLinkMutation = useDeleteLink();
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
-console.log('API_BASE_URL:', API_BASE_URL);
+console.log("import.meta.env.VITE_API_BASE_URL ",import.meta.env.VITE_API_BASE_URL );
+  
+  const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
+console.log('API_BASE_URL:', VITE_API_BASE_URL);
   const handleDelete = (code: string) => {
       deleteLinkMutation.mutate(code, {
         onSuccess: () => {
@@ -119,7 +121,7 @@ console.log('API_BASE_URL:', API_BASE_URL);
                     <td className="px-8 py-6 whitespace-nowrap">
                         <div className="flex items-center space-x-3">
                           <a 
-                            href={`${API_BASE_URL}/${link.shortCode}`}
+                            href={`${VITE_API_BASE_URL}/${link.shortCode}`}
                             className="font-mono text-lg font-bold bg-blue-50 text-blue-700 px-3 py-2 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -129,7 +131,7 @@ console.log('API_BASE_URL:', API_BASE_URL);
                           <Button
                             variant="secondary"
                             size="sm"
-                            onClick={() => handleCopy(`${API_BASE_URL}/${link.shortCode}`, link.shortCode)}
+                            onClick={() => handleCopy(`${VITE_API_BASE_URL}/${link.shortCode}`, link.shortCode)}
                             icon={copiedCode === link.shortCode ? Copy : Copy}
                           >
                             {copiedCode === link.shortCode ? 'Copied!' : 'Copy'}
