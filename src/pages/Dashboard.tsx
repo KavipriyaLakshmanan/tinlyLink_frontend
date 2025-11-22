@@ -12,10 +12,8 @@ export const Dashboard: React.FC = () => {
   const { data: links,refetch } = useLinks();
   const deleteLinkMutation = useDeleteLink();
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-console.log("import.meta.env.VITE_API_BASE_URL ",import.meta.env.VITE_API_BASE_URL );
   
   const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
-console.log('API_BASE_URL:', VITE_API_BASE_URL);
   const handleDelete = (code: string) => {
       deleteLinkMutation.mutate(code, {
         onSuccess: () => {

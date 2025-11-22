@@ -10,7 +10,6 @@ export const StatsPage: React.FC = () => {
   const { data: stats, isLoading, error } = useLinkStats(code!);
 
  const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
-console.log('API_BASE_URL:', VITE_API_BASE_URL,import.meta.env.VITE_API_BASE_URL );
 
   const handleCopy = async () => {
     if (stats) {
