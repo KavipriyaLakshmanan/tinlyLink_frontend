@@ -8,7 +8,7 @@ server: {
     port: 5173,
     proxy: {
       '/api': {
-        target: 'http://localhost:3001',
+        target: 'https://tinly-link-backend-1a91.vercel.app',
         changeOrigin: true,
       }
     }
