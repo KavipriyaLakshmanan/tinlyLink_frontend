@@ -13,7 +13,7 @@ export const Dashboard: React.FC = () => {
   const deleteLinkMutation = useDeleteLink();
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001';
-
+console.log('API_BASE_URL:', API_BASE_URL);
   const handleDelete = (code: string) => {
       deleteLinkMutation.mutate(code, {
         onSuccess: () => {
@@ -114,7 +114,7 @@ export const Dashboard: React.FC = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {links.map((link: Link) => (
+                  {links?.map((link: Link) => (
                     <tr key={link.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-8 py-6 whitespace-nowrap">
                         <div className="flex items-center space-x-3">
