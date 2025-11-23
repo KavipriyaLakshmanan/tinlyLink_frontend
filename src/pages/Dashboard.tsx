@@ -172,7 +172,6 @@ export const Dashboard: React.FC = () => {
                           variant="danger"
                           size="sm"
                           onClick={() => handleDelete(link.shortCode)}
-                          loading={deleteLinkMutation.isPending}
                           icon={Trash2}
                         >
                           Delete
